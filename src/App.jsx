@@ -39,9 +39,9 @@ function App() {
 }
 
   return (
-    <div>
+    <div className='my-todo-list'>
       <div className='input'>
-        <div>
+        <div className='input-cards'>
           <RadioButtonGroup label="Priority" handleChange={priorityHandleChange}/>
           <TextInput label="Task"/>
           <Textarea label="Memo"/>

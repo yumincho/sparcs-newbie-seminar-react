@@ -1,7 +1,12 @@
 #root {
-  max-width: 1280px;
+  width: 100vw;
+  height: 100vh;
+
   margin: 0;
-  padding: 0;
+  padding: 2em;
+
+  display: flex;
+  flex-direction: column;
   text-align: left;
 
   --font-size-large: 20px;
@@ -11,6 +16,16 @@
   --font-weight-bold: 700;
   --font-weight-regular: 500;
   --font-weight-light: 300;
+
+  --item-gap: 12px;
+}
+
+.my-todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--item-gap);
+
+  width: auto;
 }
 
 .input {
@@ -20,6 +35,15 @@
 
   background-color: aliceblue;
   padding: 16px 24px;
+  border-radius: 24px;
+
+  width: 500px;
+}
+
+.input-cards {
+  display:flex;
+  flex-direction: column;
+  gap: var(--item-gap);
 }
 
 .input-card {
@@ -43,5 +67,12 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: var(--item-gap);
+
+  height: 640px;
+  overflow-y: scroll;
+
+  background-color: aliceblue;
+  padding: 16px 24px;
+  border-radius: 24px;
 }
