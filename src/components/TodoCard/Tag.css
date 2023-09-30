@@ -1,0 +1,26 @@
+.tag {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-bold);
+
+    text-align: center;
+    margin: 2px 8px;
+    border-radius: 10px;
+    padding: 2px 8px;
+    margin: 0px;
+    height: fit-content;
+}
+
+.High {
+    background-color: rgb(255, 225, 229);
+    color: red;
+}
+
+.Medium {
+    background-color: rgb(199, 245, 199);
+    color: green;
+}
+
+.Low {
+    background-color: rgb(211, 234, 243);
+    color: blue;
+}

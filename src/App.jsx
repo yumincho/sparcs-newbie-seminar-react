@@ -1,34 +1,59 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import dayjs from 'dayjs'
+
+import TodoCard from './components/TodoCard/TodoCard'
+import TextInput from './components/TextInput'
+import Textarea from './components/Textarea'
+import MyDatePicker from './components/MyDatePicker'
+import RadioButtonGroup from './components/RadioButtonGroup'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [priority, setPriority] = useState("Medium")
+  const [task, setTask] = useState("")
+  const [memo, setMemo] = useState("")
+  const [due, setDue] = useState(new Date())
+
+  const [todoList, setTodoList] = useState([])
+
+  const priorityHandleChange = (e) => {
+    setPriority(e.target.value);
+  };
+
+  const dueOnChange = (date) => {
+    setDue(date);
+  }
+
+  const buttonOnClick = () => {
+    const newTodo = <TodoCard priority={priority} title={task} memo={memo} due={dateFormat(due)}/>
+    setTodoList([newTodo, ...todoList])
+  }
+
+  const dateFormat = (date) => {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+
+    return [month, day, year].join('/');
+}
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <div className='input'>
+        <div>
+          <RadioButtonGroup label="Priority" handleChange={priorityHandleChange}/>
+          <TextInput label="Task"/>
+          <Textarea label="Memo"/>
+          <MyDatePicker label="Due" due={due} onChange={dueOnChange}/>
+        </div>
+        <button className='input-button' onClick={buttonOnClick}>Add</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      
+      <div className='todo-card-list'>
+        {todoList.map((card) => (card))}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
