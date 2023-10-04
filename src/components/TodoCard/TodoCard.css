@@ -1,7 +1,6 @@
 .todo-card {
     width: 320px;
-    height: 180px;
-    
+
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -17,13 +16,46 @@
     justify-content: space-between;
     align-items: baseline;
     width: 100%;
+    margin-bottom: 12px;
 }
 
 .task {
     font-size: var(--font-size-large);
     font-weight: var(--font-weight-bold);
+    word-wrap: break-word;
+    line-break: auto;
 }
 
 .memo {
     font-size: var(--font-size-small);
+    word-wrap: break-word;
+    line-break: auto;
+}
+
+.taskWithCheck {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.myCheckbox {
+    width: 16px;
+    height:16px;
+    border-radius: 50%;
+    border: 1px solid var(--color-gray-d);
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.myCheckbox:checked {
+    accent-color: var(--color-black);
+}
+
+.myCheckbox:checked + .task {
+    text-decoration: line-through;
+    color: var(--color-gray-9);
+}
+
+.myCheckbox::after {
+    color: white;
 }

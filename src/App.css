@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
 #root {
   width: 100vw;
   height: 100vh;
@@ -18,6 +20,18 @@
   --font-weight-light: 300;
 
   --item-gap: 12px;
+
+  --color-system-blue: #0066FF;
+
+  --color-black: #000000;
+  --color-gray-9: #999999;
+  --color-gray-a: #AAAAAA;
+  --color-gray-d: #dddddd;
+  --color-gray-f5: #F5F5F5;
+}
+
+html * {
+  font-family: Pretendard, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 
 .my-todo-list {
@@ -26,6 +40,10 @@
   gap: var(--item-gap);
 
   width: auto;
+}
+
+p {
+  margin: 0px;
 }
 
 .input {
@@ -37,18 +55,19 @@
   padding: 16px 24px;
   border-radius: 24px;
 
-  width: 500px;
+  /* width: 500px; */
 }
 
-.input-cards {
-  display:flex;
-  flex-direction: column;
+.radioContainer {
+  display: flex;
+  flex-direction: row;
   gap: var(--item-gap);
 }
 
-.input-card {
-  display: flex;
-  flex-direction: row;
+.input-container {
+  display:grid;
+  grid-template-columns: 1fr 3fr;
+  gap: var(--item-gap);
 }
 
 .input-label {
@@ -63,16 +82,19 @@
   padding: 12px 16px;
 }
 
-.todo-card-list {
+.cardListContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+.cardList {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-content: flex-start;
   gap: var(--item-gap);
 
   height: 640px;
   overflow-y: scroll;
-
-  background-color: aliceblue;
-  padding: 16px 24px;
-  border-radius: 24px;
 }

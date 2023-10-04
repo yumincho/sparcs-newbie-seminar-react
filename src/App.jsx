@@ -38,13 +38,26 @@ function App() {
       alert("You can not blank the task :(")
       return;
     }
-    const newTodo = <TodoCard key={key} priority={priority} task={task} memo={memo} due={dateFormat(due)}/>
+    // const newTodo = <TodoCard key={key} priority={priority} task={task} memo={memo} due={dateFormat(due)}/>
+    const newTodo = {
+      "key": key,
+      "priority": priority,
+      "task": task,
+      "memo": memo,
+      "due": dateFormat(due),
+      "done": false
+    }
     setTodoList([newTodo, ...todoList])
     setKey(key+1)
     setMemo("")
     setTask("")
     setPriority("Medium")
   }
+
+  const onClickCheck = (id) => {
+    setTodoList((todoList) => todoList.map((elem) => (elem.key === id ? {...elem, done:!elem.done} : elem)))
+  }
+
 
   const dateFormat = (date) => {
     const year = date.getFullYear();
@@ -54,9 +67,10 @@ function App() {
     return [month, day, year].join('/');
 }
 
+
   return (
     <div className='my-todo-list'>
-      <h2>🍪 yumyum's To-Do List</h2>
+      <h2>🍪 yumyum&apos;s To-Do List</h2>
       <div className='input'>
         <div className='input-container'>
           <p className='input-label'>{"Priority"}</p>
@@ -71,12 +85,26 @@ function App() {
         <button className='input-button' onClick={buttonOnClick}>Add</button>
       </div>
       
-      <h4>To-Do</h4>
-      <div className='todo-card-list'>
-        {todoList.map((card) => (card))}
+      <div className='cardListContainer'>
+        <p><strong>To-Do</strong></p>
+        <p><strong>Done</strong></p>
+        <div className='cardList'>
+          {
+            todoList
+            .filter((elem) => (elem.done === false))
+            .map((elem) =>
+            <TodoCard key={elem.key} id={elem.key} priority={elem.priority} task={elem.task} memo={elem.memo} due={elem.due} done={false} onClickCheck={onClickCheck}/>
+          )}
+        </div>
+        <div className='cardList'>
+          {
+            todoList
+            .filter((elem) => (elem.done === true))
+            .map((elem) =>
+            <TodoCard key={elem.key} id={elem.key} priority={elem.priority} task={elem.task} memo={elem.memo} due={elem.due} done={elem.done} onClickCheck={onClickCheck}/>
+          )}
+        </div>
       </div>
-
-      <h4>Done</h4>
     </div>
   )
 }
