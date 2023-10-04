@@ -1,15 +1,8 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const MyDatePicker = ({label, due, onChange}) => {
-    
-    
-    return <div className='input-card'>
-        <p className='input-label'>
-            {label}
-        </p>
-        <DatePicker selected={due} onChange={onChange}/>
-    </div>
+const MyDatePicker = ({value, onChange}) => {
+    return <DatePicker selected={value} onChange={onChange}/>
 }
 
 export default MyDatePicker;

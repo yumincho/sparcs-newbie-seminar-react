@@ -1,14 +1,14 @@
-const Textarea = ({label, task}) => {
-    return <div className='input-card'>
-        <p className='input-label'>
-            {label}
-        </p>
-        <textarea
-        name="task"
-        value={task}
-        rows={3}
-    />
-    </div>
+import "./Text.css"
+
+const Textarea = ({value, onChange}) => {
+    return <textarea
+            className="text"
+            name="task"
+            value={value}
+            rows={4}
+            placeholder="Add memo"
+            onChange={onChange}
+        />
 }
 
 export default Textarea;

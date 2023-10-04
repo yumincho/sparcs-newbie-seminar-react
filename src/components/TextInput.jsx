@@ -1,13 +1,13 @@
-const TextInput = ({label, task}) => {
-    return <div className='input-card'>
-        <p className='input-label'>
-            {label}
-        </p>
-        <input
+import "./Text.css"
+
+const TextInput = ({value, onChange}) => {
+    return <input
+            className="text"
             name="task"
-            value={task}
+            value={value}
+            placeholder="Add task"
+            onChange={onChange}
         />
-  </div>
 }
 
 export default TextInput;
