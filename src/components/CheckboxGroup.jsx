@@ -5,7 +5,6 @@ const CheckboxGroup = ({high, medium, low, onChange}) => {
 
     const highOnChange = () => {
         onChange("high")
-        console.log("high")
     }
 
     const mediumOnChange = () => {

@@ -32,7 +32,6 @@ function App() {
     : (filter === "medium")
     ? setShowMedium(!showMedium)
     : setShowLow(!showLow)
-    console.log(showHigh, showMedium, showLow);
   };
 
   const dueOnChange = (date) => {
@@ -68,6 +67,10 @@ function App() {
 
   const onClickCheck = (id) => {
     setTodoList((todoList) => todoList.map((elem) => (elem.key === id ? {...elem, done:!elem.done} : elem)))
+  }
+
+  const deleteBtnClickHandle = (id) => {
+    setTodoList((todoList) => todoList.filter((elem) => (elem.key !== id)))
   }
 
   const dateFormat = (date) => {
@@ -116,7 +119,7 @@ function App() {
             ? elem : "")
             .filter((elem) => (elem.done === false))
             .map((elem) =>
-            <TodoCard key={elem.key} id={elem.key} priority={elem.priority} task={elem.task} memo={elem.memo} due={elem.due} done={false} onClickCheck={onClickCheck}/>
+            <TodoCard key={elem.key} id={elem.key} priority={elem.priority} task={elem.task} memo={elem.memo} due={elem.due} done={false} onClickCheck={onClickCheck} deleteBtnClickHandle={deleteBtnClickHandle}/>
           )}
         </div>
         <div className='cardList'>
@@ -129,7 +132,7 @@ function App() {
             ? elem : "")
             .filter((elem) => (elem.done === true))
             .map((elem) =>
-            <TodoCard key={elem.key} id={elem.key} priority={elem.priority} task={elem.task} memo={elem.memo} due={elem.due} done={elem.done} onClickCheck={onClickCheck}/>
+            <TodoCard key={elem.key} id={elem.key} priority={elem.priority} task={elem.task} memo={elem.memo} due={elem.due} done={elem.done} onClickCheck={onClickCheck} deleteBtnClickHandle={deleteBtnClickHandle}/>
           )}
         </div>
       </div>

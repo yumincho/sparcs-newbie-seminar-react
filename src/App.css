@@ -3,6 +3,7 @@
 #root {
   width: 100vw;
   height: 100vh;
+  max-width: 720px;
 
   margin: 0;
   padding: 2em;
